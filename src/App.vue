@@ -1,7 +1,11 @@
 <template>
   <div class="app">
-    <postForm/>
-    <postList v-bind:posts="posts"/>
+    <postForm
+    @create="createPost"
+    />
+    <postList 
+    v-bind:posts="posts"
+    />
   </div>
 </template>
 <script>
@@ -20,6 +24,11 @@ export default {
         {id: 4, title: 'Анатомическая амуниция 4', body: 'Описание поста 4'},
       ],
    }
+  },
+      methods: {
+      createPost(post) {
+      this.posts.push(post);
+    },
   }
 }
 </script>

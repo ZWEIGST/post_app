@@ -25,23 +25,22 @@
               title: '',
               body: '',
             },
-            posts: []
+            posts: [],
           };
         },
         methods: {
          createPost() {
-          const newPost = {
-           id: Date.now(),
-           title: this.post.title,
-           body: this.post.body,
-           };
-           this.posts.push(newPost);
-           this.post.title = '';
-           this.post.body = '';
-   },
-   inputTitle(event) {
-     this.post.title = event.target.value;
-   },
+           this.post.id = Date.now();
+           this.$emit('create', this.post)
+           this.post = {
+           title:'',
+           body:''
+           }
+          
+        },
+         inputTitle(event) {
+         this.post.title = event.target.value;
+         },
   },
   };
 </script>

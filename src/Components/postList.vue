@@ -10,7 +10,7 @@
 <script>
     export default {
         props: {
-          posts: {
+          post: {
             type: Array,
             require: true,
           }
