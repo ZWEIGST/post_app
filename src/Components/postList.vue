@@ -9,11 +9,16 @@
 
 <script>
     export default {
-        
+        props: {
+          posts: {
+            type: Array,
+            require: true,
+          }
+        }
     }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .post {
   padding: 15px 0px 15px 0px;
   border: 1px solid rgb(184, 132, 184);

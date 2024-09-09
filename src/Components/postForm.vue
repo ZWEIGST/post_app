@@ -2,14 +2,14 @@
     <form  @submit.prevent>
       <h4>Создание поста</h4>
       <input 
-      v-bind:value="title"
+      v-model="post.title"
       @input="inputTitle"
       class="input" 
       type="text" 
       placeholder="Название">
       <input 
-      v-bind:value="body"
-      @input="body = $event.target.value"
+      v-bind:value="post.body"
+      @input="post.body = $event.target.value"
       class="input" 
       type="text" 
       placeholder="Описание">
@@ -19,8 +19,31 @@
 
 <script>
     export default {
-        
-    }
+        data() {
+          return {
+            post: {
+              title: '',
+              body: '',
+            },
+            posts: []
+          };
+        },
+        methods: {
+         createPost() {
+          const newPost = {
+           id: Date.now(),
+           title: this.post.title,
+           body: this.post.body,
+           };
+           this.posts.push(newPost);
+           this.post.title = '';
+           this.post.body = '';
+   },
+   inputTitle(event) {
+     this.post.title = event.target.value;
+   },
+  },
+  };
 </script>
 
 <style lang="scss" scoped>
