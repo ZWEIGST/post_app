@@ -13,12 +13,22 @@
       class="input" 
       type="text" 
       placeholder="Описание">
-      <button class="btn" @click="createPost">Опубликовать пост</button>
+      <MyButton 
+       class="btn"
+       style="align-self: flex-end;" 
+       @click="createPost">
+       Опубликовать пост
+      </MyButton>
     </form>
 </template>
 
 <script>
+import MyButton from './UI/MyButton.vue';
+
     export default {
+      comments: {
+        MyButton
+      },
         data() {
           return {
             post: {
@@ -50,6 +60,12 @@ form {
   display: flex;
   flex-direction: column;
 }
+.input {
+  width: 100%;
+  border: 1px solid rgb(184, 132, 184);
+  padding: 10px 15px;
+  margin-top: 15px;
+}
 .btn {
   margin-top: 15px;
   align-self: flex-end;
@@ -57,11 +73,5 @@ form {
   background: none;
   color:rgb(184, 132, 184);
   border: 1px solid rgb(184, 132, 184);
-}
-.input {
-  width: 100%;
-  border: 1px solid rgb(184, 132, 184);
-  padding: 10px 15px;
-  margin-top: 15px;
 }
 </style>
