@@ -1,18 +1,16 @@
 <template>
     <form  @submit.prevent>
       <h4>Создание поста</h4>
-      <input 
-      v-model="post.title"
-      @input="inputTitle"
-      class="input" 
+      <MyInput
+      v-model="post.title" 
       type="text" 
-      placeholder="Название">
-      <input 
+      placeholder="Название"
+      />
+      <MyInput
       v-bind:value="post.body"
-      @input="post.body = $event.target.value"
-      class="input" 
       type="text" 
-      placeholder="Описание">
+      placeholder="Описание"
+      />
       <MyButton 
        class="btn"
        style="align-self: flex-end;" 
@@ -24,10 +22,12 @@
 
 <script>
 import MyButton from './UI/MyButton.vue';
+import MyInput from './UI/MyInput.vue';
 
     export default {
       comments: {
-        MyButton
+        MyButton,
+        MyInput,
       },
         data() {
           return {
@@ -60,12 +60,7 @@ form {
   display: flex;
   flex-direction: column;
 }
-.input {
-  width: 100%;
-  border: 1px solid rgb(184, 132, 184);
-  padding: 10px 15px;
-  margin-top: 15px;
-}
+
 .btn {
   margin-top: 15px;
   align-self: flex-end;
